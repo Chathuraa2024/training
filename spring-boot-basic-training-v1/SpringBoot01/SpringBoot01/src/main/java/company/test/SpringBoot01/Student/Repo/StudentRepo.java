@@ -1,6 +1,6 @@
-package company.test.SpringBoot01.Repo;
+package company.test.SpringBoot01.Student.Repo;
 
-import company.test.SpringBoot01.Module.student;
+import company.test.SpringBoot01.Student.Module.student;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
