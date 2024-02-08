@@ -1,8 +1,7 @@
 package company.test.SpringBoot01.Student.Service;
 
-import company.test.SpringBoot01.Student.Addvice.ExceptionHandling;
-import company.test.SpringBoot01.Student.Dto.StudentRequestDto;
-import company.test.SpringBoot01.Student.Dto.StudentResponseDto;
+import company.test.SpringBoot01.Student.Dto.Request.StudentRequestDto;
+import company.test.SpringBoot01.Student.Dto.Response.StudentResponseDto;
 import company.test.SpringBoot01.Student.Module.student;
 import company.test.SpringBoot01.Student.Repo.StudentRepo;
 import company.test.SpringBoot01.Student.util.StandedResponce;
@@ -20,17 +19,17 @@ public class StudentService {
     @Autowired
     private StudentRepo studentrepo;
 
-    public List<StudentResponseDto> getallStudent() {
+    public List<StudentResponseDto> getAllStudent() {
         List<student> students = studentrepo.findAll();
         if (students.size() > 0) {
-            List<StudentResponseDto> studentlist = new ArrayList<>();
+            List<StudentResponseDto> studentList = new ArrayList<>();
             for (student student : students) {
-                StudentResponseDto studentdto = new StudentResponseDto(student.getName(),
+                StudentResponseDto studentDto = new StudentResponseDto(student.getName(),
                         student.getDateOfBirth(),
                         student.getAverage());
-                studentlist.add(studentdto);
+                studentList.add(studentDto);
             }
-            return studentlist;
+            return studentList;
         } else {
             throw new RuntimeException("empty database ");
         }
@@ -49,7 +48,7 @@ public class StudentService {
         try{
             Optional<student> student = studentrepo.findById(studentId);
             StudentResponseDto studentResponseDto = new StudentResponseDto(student.get().getName(), student.get().getDateOfBirth(), student.get().getAverage());
-            return new ResponseEntity<StandedResponce>(new StandedResponce(201,"succes",studentResponseDto), HttpStatus.OK);
+            return new ResponseEntity<StandedResponce>(new StandedResponce(201,"success",studentResponseDto), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<StandedResponce>(new StandedResponce(401,"notfound",e.getMessage()),HttpStatus.NOT_FOUND);
         }

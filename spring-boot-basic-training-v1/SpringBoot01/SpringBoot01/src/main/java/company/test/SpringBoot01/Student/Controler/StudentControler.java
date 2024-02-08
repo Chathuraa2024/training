@@ -1,9 +1,11 @@
 package company.test.SpringBoot01.Student.Controler;
 
-import company.test.SpringBoot01.Student.Dto.StudentRequestDto;
-import company.test.SpringBoot01.Student.Dto.StudentResponseDto;
+import company.test.SpringBoot01.Student.Dto.Request.StudentRequestDto;
+import company.test.SpringBoot01.Student.Dto.Response.StudentResponseDto;
 import company.test.SpringBoot01.Student.Service.StudentService;
 import company.test.SpringBoot01.Student.util.StandedResponce;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +19,20 @@ public class StudentControler {
     @Autowired
     private StudentService studentService;
 
+//    private static final Logger logger = LoggerFactory.getLogger(StudentControler.class);
 
     @GetMapping("test")
     public ResponseEntity<StandedResponce> test(){
-        String massege = "hellow springboot";
-        return new ResponseEntity<StandedResponce>(new StandedResponce(200,"test case pass",massege),HttpStatus.OK);
+//        logger.info("Received a request to /hello spring");
+        String message = "hello springboot";
+//        logger.debug("Returning message: {}", message);
+        return new ResponseEntity<StandedResponce>(new StandedResponce(200,"test case pass",message),HttpStatus.OK);
     }
 
     @GetMapping("HTTP GET/student-management/students")
     public ResponseEntity<StandedResponce> getAllStudent(){
-        List<StudentResponseDto> studentResponseDtos = studentService.getallStudent();
-        return new ResponseEntity<StandedResponce>(new StandedResponce(201,"Success",studentResponseDtos),HttpStatus.OK);
+        List<StudentResponseDto> studentResponseDto = studentService.getAllStudent();
+        return new ResponseEntity<StandedResponce>(new StandedResponce(201,"Success",studentResponseDto),HttpStatus.OK);
     }
 
     @GetMapping("HTTP GET/student-management/students/{id}")

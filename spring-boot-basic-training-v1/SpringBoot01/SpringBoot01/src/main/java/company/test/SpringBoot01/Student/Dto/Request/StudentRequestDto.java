@@ -1,4 +1,4 @@
-package company.test.SpringBoot01.Student.Dto;
+package company.test.SpringBoot01.Student.Dto.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
