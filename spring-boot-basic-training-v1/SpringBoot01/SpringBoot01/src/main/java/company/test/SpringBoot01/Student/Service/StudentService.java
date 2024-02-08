@@ -20,7 +20,6 @@ public class StudentService {
     @Autowired
     private StudentRepo studentrepo;
 
-
     public List<StudentResponseDto> getallStudent() {
         List<student> students = studentrepo.findAll();
         if (students.size() > 0) {
