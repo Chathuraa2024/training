@@ -1,4 +1,4 @@
-package company.test.SpringBoot01.Module;
+package company.test.SpringBoot01.Student.Module;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
