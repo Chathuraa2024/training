@@ -1,0 +1,14 @@
+version: "5"
+services:
+  springmg:
+    image: mongo:latest
+    container_name: "springmg"
+    ports:
+      - 27017:27017
+  springdockercompose:
+    image: springdockercompose:latest
+    container_name: "springdockercompose"
+    ports:
+      - 9090:8000
+    links:
+      - springmg
