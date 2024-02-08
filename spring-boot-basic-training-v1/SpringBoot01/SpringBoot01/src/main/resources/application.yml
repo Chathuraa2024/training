@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      database: springboot01
+      host: springmg
+      port: 27017
