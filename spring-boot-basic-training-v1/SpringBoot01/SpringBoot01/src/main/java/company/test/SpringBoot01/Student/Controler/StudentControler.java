@@ -19,13 +19,17 @@ public class StudentControler {
     @Autowired
     private StudentService studentService;
 
-//    private static final Logger logger = LoggerFactory.getLogger(StudentControler.class);
+    private static final Logger logInfo = LoggerFactory.getLogger(StudentControler.class);
 
     @GetMapping("test")
     public ResponseEntity<StandedResponce> test(){
-//        logger.info("Received a request to /hello spring");
+        logInfo.info("Received a request to hello spring");
         String message = "hello springboot";
-//        logger.debug("Returning message: {}", message);
+        logInfo.debug("Returning message: {}", message);
+        logInfo.trace("Trace Message!");;
+        logInfo.warn("Warn Message!");
+        logInfo.error("Error Message!");
+       // logInfo.fatal("Fatal Message!");
         return new ResponseEntity<StandedResponce>(new StandedResponce(200,"test case pass",message),HttpStatus.OK);
     }
 

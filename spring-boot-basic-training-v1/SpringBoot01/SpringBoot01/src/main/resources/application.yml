@@ -4,3 +4,8 @@ spring:
       database: springboot01
       host: springmg
       port: 27017
+
+logging:
+  level:
+    company.test.SpringBoot01.Student.Controler: TRACE
+    root: TRACE
